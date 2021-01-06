@@ -12,3 +12,6 @@ app.listen(port, function(){
     console.log(`Server ON http://localhost:${port}`.rainbow)
 })
 
+app.get('/user', function(req, res){
+    res.send('Hola gente');
+})
