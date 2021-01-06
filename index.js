@@ -1,16 +1,19 @@
 // IMPORTES DE LIBRERIAS
 const express = require('express');
 const app = express();
-const port = 3030;
 const colors = require('colors');
 const morgan = require('morgan');
+
+// Settings
+app.set('appName', 'Vicente Express Tutorial');
+app.set('port', 3030);
+app.set('view engine', 'ejs')
 
 //MIDDLEWARE
 function logger(req, res, next){
     console.log(`Route Recived: ${req.protocol}://${req.get('host')}${req.originalUrl}`);
     next();
 }
-
 app.use(logger);
 app.use(express.json());
 app.use(express.static('public'));
@@ -18,8 +21,8 @@ app.use(morgan('dev'));
 
 
 //Levantar servidor
-app.listen(port, function(){
-    console.log(`Server ON http://localhost:${port}`.rainbow)
+app.listen(app.get('port'), function(){
+    console.log(('Server ON http://localhost:'.rainbow),app.get('port'))
 })
 
 /*
