@@ -28,6 +28,11 @@ app.listen(app.get('port'), function(){
 /*
 >>> RUTAS <<<
 */
+
+app.get('/', (req, res) =>{
+    res.render('index.ejs');
+})
+
 app.all('/user', (req, res, next) =>{
     console.log('Por aqui pasó');
     next();
