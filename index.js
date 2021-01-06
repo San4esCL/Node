@@ -13,6 +13,7 @@ function logger(req, res, next){
 
 app.use(logger);
 app.use(express.json());
+app.use(express.static('public'));
 app.use(morgan('dev'));
 
 
@@ -27,10 +28,6 @@ app.listen(port, function(){
 app.all('/user', (req, res, next) =>{
     console.log('Por aqui pasó');
     next();
-})
-
-app.get('/', function(req, res){
-    res.send('<h1>Hola Mundo!</h1>');
 })
 
 app.get('/user', (req, res) =>{
