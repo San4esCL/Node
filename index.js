@@ -1,15 +1,21 @@
+// IMPORTES DE LIBRERIAS
 const express = require('express');
 const app = express();
 const port = 3030;
 const colors = require('colors');
+const morgan = require('morgan');
 
 //MIDDLEWARE
 function logger(req, res, next){
     console.log(`Route Recived: ${req.protocol}://${req.get('host')}${req.originalUrl}`);
     next();
 }
+
 app.use(logger);
 app.use(express.json());
+app.use(morgan('dev'));
+
+
 //Levantar servidor
 app.listen(port, function(){
     console.log(`Server ON http://localhost:${port}`.rainbow)
